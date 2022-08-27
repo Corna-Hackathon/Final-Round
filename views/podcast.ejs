@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- Navbar -->
-<%- include('header/header.ejs')%>
+<%- include('header/navbar.ejs')%>
 <!-- End Of Navbar -->
 
 <!-- Search Section -->
@@ -38,7 +38,7 @@
         <h2 class="category">AMAZING PODCASTS ARE WAITING FOR YOU</h2>
         <div class="podcast">
             <% podcasts.forEach(function(podcast){ %>
-                <%- include('podcast-item', {id: podcast._id, name: podcast.name, username: podcast.ownerId.username}); %>
+                <%- include('box/podcast-item', {id: podcast._id, name: podcast.name, username: podcast.ownerId.username}); %>
             <% }); %>
         </div>
     </div>
@@ -99,34 +99,7 @@
 
 
 <!-- Footer -->
-<div class="footer" >
-    <ul class="socials">
-        <li><a href="https://www.facebook.com/The-Cornfield-project-109047315262658/"> <i class="fa fa-facebook"></i> </a></li>
-        <li><a href="https://twitter.com/home?lang=vi"> <i class="fa fa-twitter"></i> </a> </li>
-        <li><a href="https://www.youtube.com/"> <i class="fa fa-youtube"></i> </a> </li>
-        <li><a href="https://github.com/Corna-Hackathon/demo-hackathon"> <i class="fa fa-github"></i> </a></li>
-    </ul>
-    <ul class="menu">
-        <li>
-            <a href="/"><strong>Home</strong></a>
-        </li>
-        <li>
-            <a href="/news"> <strong>New</strong> </a>
-        </li>
-        <li>
-            <a href="/podcast"> <strong>Podcast</strong></a>
-        </li>
-        <li>
-            <a href="/charity"> <strong>Charity</strong></a>
-        </li>
-        <li>
-            <a href="/leaderboard"> <strong>LeaderBoard</strong></a>
-        </li>
-    </ul>
-    <article class="copyright">
-        Corna Coders &copy; 2022
-    </article>
-</div>
+<%-include('header/footer.ejs')%>
 <!-- End of Footer -->
 
 

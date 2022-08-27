@@ -56,8 +56,8 @@ restart_quiz.onclick = ()=>{
 quit_quiz.onclick = ()=>{
     window.location.reload(); //reload the current window
 }
-const next_btn = document.querySelector("footer .next_btn");
-const bottom_ques_counter = document.querySelector("footer .total_que");
+const next_btn = document.querySelector("footer.ejs .next_btn");
+const bottom_ques_counter = document.querySelector("footer.ejs .total_que");
 // if Next Que button clicked
 next_btn.onclick = ()=>{
     if(que_count < questions.length - 1){ //if question count is less than total question length

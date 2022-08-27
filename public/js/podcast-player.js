@@ -69,7 +69,7 @@ function handleEndedSong() {
     isPlaying = true;
     playPause();
   } else {
-    window.location.href = "afterpod.html";
+    window.location.href = "afterpod.ejs";
   }
 }
 function changeSong(dir) {
