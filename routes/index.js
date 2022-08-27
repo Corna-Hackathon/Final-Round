@@ -19,7 +19,7 @@ router.get('/news', function(req, res) {
 });
 
 router.get('/podcast', async function(req, res) {
-    console.log(await Podcast.findByFileName())
+    // console.log(await Podcast.findByFileName())
     res.render('podcast',{podcasts: await Podcast.findByFileName()} );
 });
 
