@@ -138,13 +138,13 @@ header ul li button.connect{
     display: none;
 }
 /* Connect Button */
-.button {
+.login {
     outline: 0;
     position: relative;
     border-radius: 15px;
     display: inline-block;
-    padding: 10px 40px;
-    font-size: 16px;
+    padding: 6px 40px;
+    font-size: 20px;
     overflow: hidden;
     cursor: pointer;
     border: 1px;
@@ -154,30 +154,9 @@ header ul li button.connect{
     font-family: "noto sans", sans-serif;
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
-.button:hover {
-    background-color: #e88845;
-    color: #fff;
-    box-shadow: 0 0 5px #6558db,
-    0 0 20px rgba(76, 0, 255, 0.596),
-    0 0 35px rgb(75 0 255 / 0.7),
-    0 0 50px rgb(75 0 255 / 0.6);
-    border-color: #fff;
-}
-.button {
-    outline: 0;
-    position: relative;
-    display: inline-block;
-    padding: 10px 40px;
-    font-size: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    background: #e88845;
-    color: #000;
-    font-weight: 600;
-    color: #fff;
-    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-.button:hover {
+
+
+.login:hover {
     background-color: rgb(168, 36, 36);
     color: #000;
     box-shadow: 0 0 5px rgb(168, 36, 36),
@@ -185,7 +164,6 @@ header ul li button.connect{
     0 0 35px rgb(24.75 21.57 53.68 / 0.7),
     0 0 50px rgb(24.75 21.57 53.68 / 0.6);
 }
-
 
 .dropdown a{
     border: none;
@@ -222,7 +200,7 @@ header ul li button.connect{
     font-family: "Noto Sans", sans-serif;
     display: block;
     color: #000000;
-    border-radius: 0;
+    border-radius: 15px;
     padding: 10px;
     text-decoration: none;
 }

@@ -43,6 +43,7 @@ router.get('/playing_pod/:id', async function(req, res) {
     if(req.isAuthenticated()){
         try {
             const data = await Podcast.findById(req.params.id).lean();
+            console.log(req.params.id);
             res.render('playing_pod', {name: data.name, id: req.params.id});
         } catch {
             res.redirect('/podcast');
@@ -55,7 +56,8 @@ router.get('/playing_pod/:id', async function(req, res) {
 router.get('/afterpod/:id', async function(req, res) {
     if(req.isAuthenticated()){
         try{
-            const data = await Podcast.findById(req.params.id).lean();
+            const data = await Podcast.findById(req.params.id).lean().populate('ownerId');
+            // console.log(data)
             res.render('afterpod', data);
         } catch (e) {
             res.redirect('/podcast');

@@ -69,7 +69,7 @@ function handleEndedSong() {
     isPlaying = true;
     playPause();
   } else {
-    window.location.href = "afterpod.ejs";
+    window.location.href = `/afterpod/${location.pathname.split('/')[2]}`;
   }
 }
 function changeSong(dir) {
@@ -130,10 +130,10 @@ rangeBar.addEventListener("change", handleChangeBar);
 function handleChangeBar() {
   song.currentTime = rangeBar.value;
 }
-function init(indexSong) {
-  song.setAttribute("src", `./assets/podcasts/${musics[indexSong].file}`);
-  musicImage.setAttribute("src", musics[indexSong].image);
-  musicName.textContent = musics[indexSong].title;
-}
+// function init(indexSong) {
+//   song.setAttribute("src", `./assets/podcasts/${musics[indexSong].file}`);
+//   musicImage.setAttribute("src", musics[indexSong].image);
+//   musicName.textContent = musics[indexSong].title;
+// }
 displayTimer();
-init(indexSong);
+// init(indexSong);

@@ -213,6 +213,8 @@ header ul li button.connect {
     background-color: yellow;
     color: #000;
     border-radius: 15px;
+
+
 }
 
 /* ---------- End of header ----------*/
@@ -231,6 +233,7 @@ main h2.text {
     color: #fff;
     font-family: Nebula;
     font-size: 6rem;
+    font-family: Nebula;
     text-transform: uppercase;
 }
 
@@ -506,7 +509,7 @@ h1 {
     border: 3px solid rgb(39, 36, 36);
     border-radius: 10px;
     z-index: 100;
-    background-image: url(/assets/cornChar\ \(1\).png);
+    background-image: url(/public/assets/cornChar\ \(1\).png);
     width: 800px;
     font-size: 20px;
     max-width: 80%;
@@ -647,7 +650,7 @@ h1 {
 
 .footer .list li:hover {
     position: relative;
-    text-shadow: 1px 0 #4b4c4d;
+    text-shadow: 1px 0px #4b4c4d;
     /* top:-10px; */
 }
 

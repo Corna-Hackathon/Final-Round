@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/after.css">
+    <link rel="stylesheet" href="/css/after.css">
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
@@ -20,30 +20,18 @@
         <div class="text_header">
             <h2> <strong>Quiz</strong></h2>
         </div>
-
-
         <div class="flex-box">
-            <div class="podcast-box" onclick="playPodcast()">
-                <div class="pod-thumb">
-                    <img src="/assets/Tame_Impala_-_Currents.png" alt="" />
-                </div>
-                <h3 class="pod-name">What Is Blockchain</h3>
-                <div class="box-info">
-                    <h3 class="pod-author">Livio Kopp</h3>
-                </div>
-            </div>
-
-            </div>
-            <div class="finish">
-                <h3> <strong> You have listened to this podcast.  Click here to start the quiz  </strong></h3>
-            </div>
-            <button class="start-button" onclick="got()">Start</button>
-            <script>
-                function got() {
-                    window.location.href = "quizz";
-                }
-            </script>
+            <%-include('box/podcast-item.ejs', {id: _id, username: ownerId.username})%>
         </div>
+        <div class="finish">
+                <h3> <strong> You have listened to this podcast.  Click here to start the quiz  </strong></h3>
+        </div>
+        <button class="start-button" onclick="got()">Start</button>
+        <script>
+            function got() {
+                window.location.href = "/quizz/<%=_id%>";
+            }
+        </script>
     </div>
 </body>
 </html>

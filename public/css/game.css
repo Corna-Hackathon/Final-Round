@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@font-face {
+    font-family: Ditmemay;
+    src: url(../Nebula-Hollow.otf) format("opentype");
+    
+}
+
+@font-face{
+    font-family: vcl;
+    src: url(../formatype-foundry-biofolio-ultimate-book-demo.otf) format("openType");
+}
+@font-face {
+    font-family: bruh;
+    src: url(../formatype-foundry-biofolio-ultimate-extrabold-demo.otf) format("openType");
+}
+
 :root {
     --top_var: 31%;
 }
@@ -9,6 +24,12 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -188,7 +209,6 @@ header ul li button.connect {
     font-family: "Noto Sans", sans-serif;
     display: block;
     color: #fff;
-    border-radius: 0;
     padding: 10px;
     text-decoration: none;
     border-radius: 15px;
@@ -208,14 +228,16 @@ header ul li button.connect {
 
 
 main {
-    width: auto;
     height: 115vh;
 }
+.container{
+    
+}
 
-
-.show-img {
+ .show-img {
     border-radius: 20px;
     margin-top: 20px;
+    background-size: contain;
 }
 
 
@@ -329,7 +351,6 @@ main {
 .footer .list li:hover {
     position: relative;
     text-shadow: 1px 0px #4b4c4d;
-    /* top:-10px; */
 }
 
 .footer .copyright{

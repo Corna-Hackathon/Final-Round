@@ -418,9 +418,11 @@ header ul li button.connect {
 }
 
 .trending-list {
+    padding: 20px; 
+    padding-right: 20px;
     list-style: none;
     position: relative;
-    padding: 10px 20px 20px;
+    padding-top: 10px;
     box-shadow: inset 0 0 15px rgba(0,0,0,.5);
 }
 
@@ -480,6 +482,7 @@ header ul li button.connect {
     flex-direction: column;
     width:180px;
     align-items: center;
+    width: 180px;
     margin-top: 30px;
     cursor: pointer;
     pointer-events: auto;
@@ -627,7 +630,7 @@ header ul li button.connect {
 
 .footer .list li:hover {
     position: relative;
-    text-shadow: 1px 0 #4b4c4d;
+    text-shadow: 1px 0px #4b4c4d;
     /* top:-10px; */
 }
 
