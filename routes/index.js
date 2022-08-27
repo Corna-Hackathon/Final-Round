@@ -3,7 +3,6 @@ const router = express.Router();
 const Podcast = require('./api/schema/podcast');
 let token = require('../onchain/token');
 
-
 /* GET home page. */
 router.get('/', async function(req, res) {
     token = await token;
@@ -19,8 +18,9 @@ router.get('/news', function(req, res) {
     res.render('news');
 });
 
-router.get('/podcast', function(req, res) {
-    res.render('podcast');
+router.get('/podcast', async function(req, res) {
+    console.log(await Podcast.findByFileName())
+    res.render('podcast',{podcasts: await Podcast.findByFileName()} );
 });
 
 router.get('/charity', function(req, res) {
@@ -72,5 +72,13 @@ router.get('/quizz/:id', async function(req, res) {
         res.redirect('/login');
     }
 });
+
+// Text to principalID
+
+// router.post('/test/:id', async  function (req, res){
+//     token = await token;
+//     console.log(typeof await token.textToPrincipal(req.params.id));
+//     res.send({})
+// });
 
 module.exports = router;

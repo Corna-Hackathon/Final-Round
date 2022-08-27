@@ -116,6 +116,5 @@ const idlFactory = ({ IDL }) => {
     ),
   });
 };
-const init = ({ IDL }) => { return []; };
 
-module.exports = idlFactory;
+module.exports = idlFactory
