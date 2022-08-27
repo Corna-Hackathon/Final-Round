@@ -13,37 +13,6 @@ const playRepeat = document.querySelector(".play-repeat");
 let isPlaying = true;
 let indexSong = 0;
 let isRepeat = false;
-// const musics = ["holo.mp3", "summer.mp3", "spark.mp3", "home.mp3"];
-const musics = [
-  {
-    id: 1,
-    title: "GIAYPHUT",
-    file: "GIAYPHUT.mp3",
-    image:
-      "./assets/GIAYPHUT-Img.jpg",
-  },
-  {
-    id: 2,
-    title: "Perfect Girl",
-    file: "PerfectGirl.mp3",
-    image:
-      "./assets/Perfect Girl-Img.jpg",
-  },
-  {
-    id: 3,
-    title: "Reflections",
-    file: "Reflections.mp3",
-    image:
-      "./assets/Reflections-Img.jpg",
-  },
-];
-/**
- * Music
- * id: 1
- * title: Holo
- * file: holo.mp3
- * image: unsplash
- */
 let timer;
 let repeatCount = 0;
 playRepeat.addEventListener("click", function () {
@@ -130,10 +99,4 @@ rangeBar.addEventListener("change", handleChangeBar);
 function handleChangeBar() {
   song.currentTime = rangeBar.value;
 }
-// function init(indexSong) {
-//   song.setAttribute("src", `./assets/podcasts/${musics[indexSong].file}`);
-//   musicImage.setAttribute("src", musics[indexSong].image);
-//   musicName.textContent = musics[indexSong].title;
-// }
 displayTimer();
-// init(indexSong);

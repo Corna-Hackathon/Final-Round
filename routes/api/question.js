@@ -41,7 +41,6 @@ router.post("/answer", async (req, res) => {
     if(req.isAuthenticated()){
         let score = 0;
         const {answer} = await Answer.findOne({user: req.user._id.toString()}).lean();
-        // console.log(req.body);
         for(let i=0; i<answer.length; i++){
             if(answer[i] === req.body.answer[i]){
                 score++;
