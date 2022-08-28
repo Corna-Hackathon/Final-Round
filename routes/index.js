@@ -1,50 +1,77 @@
 const express = require('express');
 const router = express.Router();
 const Podcast = require('./api/schema/podcast');
+const News = require('./api/schema/news');
 let token = require('../onchain/token');
+const {get} = require("mongoose");
 
-/* GET home page. */
-router.get('/', async function(req, res) {
+async function getPage(req, res, page) {
     token = await token;
-    // console.log(Number(await token.balence()));
     if(req.isAuthenticated()) {
-        res.render('index', { login: `${req.user._id}: ${await token.balanceOf(await token.textToPrincipal('cvbg5-4mj6t-sqhn2-aeku3-42nq7-2buw5-xhonw-nervo-ogphz-dujul-lae'))}` });
+        res.render(page, {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
+        });
     } else {
-        res.render('index', { login: 'Login'});
+        res.render(page, { login: undefined, money: undefined });
     }
+}
+
+router.get('/', async (req, res) => {
+    await getPage(req, res, 'index');
 });
 
-router.get('/news', function(req, res) {
-    res.render('news');
+router.get('/charity', async (req, res) => {
+    await getPage(req, res, 'charity');
 });
 
-router.get('/podcast', async function(req, res) {
-    // console.log(await Podcast.findByFileName())
-    res.render('podcast',{podcasts: await Podcast.findByFileName()} );
+router.get('/leaderboard', async (req, res) => {
+    await getPage(req, res, 'leaderboard');
 });
 
-router.get('/charity', function(req, res) {
-    res.render('charity');
-});
-
-router.get('/leaderboard', function(req, res) {
-    res.render('leaderboard');
-});
-
-router.get('/login', function(req, res) {
+router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/game', function (req, res){
-    res.render('game');
+router.get('/game', async (req, res) => {
+    await getPage(req, res, 'game');
 })
 
-router.get('/playing_pod/:id', async function(req, res) {
+router.get('/news', async (req, res) => {
+    console.log(News)
+    if(req.isAuthenticated()) {
+        res.render('news', {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId)),
+            news: await News.where(),
+        });
+    } else {
+        res.render('news', { login: undefined, money: undefined, news: await News.where(),});
+    }
+});
+
+router.get('/podcast', async (req, res) => {
+    if(req.isAuthenticated()) {
+        res.render('podcast', {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId)),
+            podcasts: await Podcast.findByFileName()
+        });
+    } else {
+        res.render('podcast', { login: undefined, money: undefined , podcasts: await Podcast.findByFileName()});
+    }
+});
+
+router.get('/playing_pod/:id', async (req, res) => {
     if(req.isAuthenticated()){
         try {
             const data = await Podcast.findById(req.params.id).lean();
-            console.log(req.params.id);
-            res.render('playing_pod', {name: data.name, id: req.params.id});
+            res.render('playing_pod', {
+                name: data.name,
+                id: req.params.id,
+                login: req.user.username,
+                money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
+            });
         } catch {
             res.redirect('/podcast');
         }
@@ -53,12 +80,17 @@ router.get('/playing_pod/:id', async function(req, res) {
     }
 });
 
-router.get('/afterpod/:id', async function(req, res) {
+router.get('/afterpod/:id', async (req, res) => {
     if(req.isAuthenticated()){
         try{
             const data = await Podcast.findById(req.params.id).lean().populate('ownerId');
-            // console.log(data)
-            res.render('afterpod', data);
+            res.render('afterpod', {
+                id: data._id,
+                name: data.name,
+                username: data.ownerId.username,
+                login: req.user.username,
+                money: await token.balanceOf(await token.textToPrincipal(req.user.principalId)),
+            });
         } catch (e) {
             res.redirect('/podcast');
         }
@@ -67,20 +99,27 @@ router.get('/afterpod/:id', async function(req, res) {
     }
 });
 
-router.get('/quizz/:id', async function(req, res) {
+router.get('/quizz/:id', async (req, res) => {
     if(req.isAuthenticated()){
-        res.render('quizz');
+        res.render('quizz', {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
+        });
     } else {
         res.redirect('/login');
     }
 });
 
-// Text to principalID
-
-// router.post('/test/:id', async  function (req, res){
-//     token = await token;
-//     console.log(typeof await token.textToPrincipal(req.params.id));
-//     res.send({})
-// });
+router.get('/blog/:id', async (req, res) => {
+    if(req.isAuthenticated()) {
+        res.render('blog', {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId)),
+            news: await News.findById(req.params.id)
+        });
+    } else {
+        res.render('blog', { login: undefined, money: undefined, news: await News.findById(req.params.id)});
+    }
+})
 
 module.exports = router;

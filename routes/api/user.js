@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const user = require('./schema/user')
+let token = require("../../onchain/token");
 // const {body} = require("express-validator");
 
 // { failureRedirect: '/' },
@@ -19,32 +20,33 @@ router.get('/info', (req, res) => {
     }
 })
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if(req.isAuthenticated()){
         req.logout((err) => {
             console.log(err)
-            res.sendStatus(200);
+            res.redirect('/');
         });
     } else {
-        res.sendStatus(500);
+        res.redirect('/');
     }
 });
 
-router.post('/signup', (req, res) => {
+router.post('/signup', async (req, res) => {
     const reqBody = req.body;
-    const users = new user({firstName: reqBody.firstName, lastName: reqBody.lastName, username: reqBody.username, principalId: reqBody.principalId})
-    user.register(users, req.body.password, (err, user) =>{
-        if(err.name === "UserExistsError") {
-            res.status(500).send({success:false, message: err.message});
-        } else if (err) {
-            console.log(err)
-            res.status(500).send({success:false, message: err.message});
+    console.log({username: reqBody.username, principalId: reqBody.principalId});
+    const users = new user({username: reqBody.username, principalId: reqBody.principalId})
+    token = await token;
+    user.register(users, req.body.password, async (err, user) => {
+        if (err) {
+            // console.log(err)
+            res.status(500).send({success: false, message: err.message});
         } else {
-            res.status(201).send({success: true, message: "Your account has been saved"});
+            await token.transfer(await token.textToPrincipal(reqBody.principalId), 5);
+            res.redirect('/');
+            // res.status(201).send({success: true, message: "Your account has been saved"});
         }
     })
 })
-
 
 
 module.exports = router;

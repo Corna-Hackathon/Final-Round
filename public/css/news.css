@@ -16,6 +16,13 @@
     src: url(../assets/web-font/formatype-foundry-biofolio-ultimate-extrabold-demo.otf) format("otf");
 }
 
+p {
+    max-width: 341px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 * {
     margin: 0;
     padding: 0;

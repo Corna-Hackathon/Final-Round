@@ -1,9 +1,4 @@
-@font-face {
-    font-family: foundry;
-    src: url(../assets/web-font/formatype-foundry-biofolio-ultimate-extrabold-demo.otf) format("openType");
-}
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
     --top_var: 31%;
@@ -13,9 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-
 }
-
 body {
     display: flex;
     flex-direction: column;
@@ -25,34 +18,11 @@ body {
     overflow-x: hidden;
     margin: 0;
     width: auto;
-    background: linear-gradient(#202020, #676767 );
+    background: rgb(224, 226, 205) ;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
 }
-
-/* Custom Scrollbar */
-html::-webkit-scrollbar {
-    width: 20px;
-}
-
-html::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 100vw;
-}
-
-html::-webkit-scrollbar-thumb {
-    background-color: #d6dee1;
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-}
-
-html::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
-}
-
-/* End of Custom Scrollbar */
 /* ---------- Header ---------- */
 header {
     position: fixed;
@@ -194,6 +164,7 @@ header ul li button.connect {
     font-family: "Noto Sans", sans-serif;
     display: block;
     color: #fff;
+    border-radius: 0;
     padding: 10px;
     text-decoration: none;
     border-radius: 15px;
@@ -208,141 +179,186 @@ header ul li button.connect {
 }
 
 /* ---------- End of header ----------*/
-.text_header{
+
+.hero{
+    max-width: 114rem;
+    height: 40rem;
+
     position: relative;
     top: 80px;
-    text-align: center;
-    font-size: 60px;
-    font-family: foundry;
-    background: -webkit-linear-gradient(#FFE56F, #A9FF9F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-size: cover;
+    
+    border-radius: 10px;
+    border: 1px solid #fff;
+    margin: 0 auto;
 
 }
 
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../publci/assets/back.png);
+}
+main{
+    width: 100%;
+    max-width: 80rem;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    margin-top: -15rem;
+    margin-bottom: 30px;
+}
 
+main h2{
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
 
-div .flex-box{
-    position: relative;
-    top: 50px;
+}
+
+main .profile-container{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    margin: 3rem 0;
+}
+
+
+main .profile-container .profile{
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px;
+    align-items: center;
 }
-div  .postcasts {
-    display: flex;
-    gap: 50px; 
+
+main .profile-container .profile .img-container {
+    width: 6rem;
+    height: 6rem;
+    background: url(../public/assets/admin.jpg) no-repeat center center / cover;
 }
-div  .name-pod{
-    display: flex;
-    position: relative;
-    float: left;
-    width: 150px;
-    background-color: red;
-    color: black;
-    font-size: 25px;
-    border-radius: 25px;
-    text-align: center;
-    flex: 0 32%;
-    height: 170px;
-    margin-top: 30%; 
+
+main .profile-container .profile .text{
+    margin: 0 1rem;
+    color: #5b5963;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.profile .text h3 {
+    text-transform: uppercase;
+}
+
+div .content {
+    max-width: 100%;
+    white-space: pre-wrap;
 }
 
 
+div .content p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #5b5963;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-div .podcasts .bruh{
-    color: black;
-    float: right;
-    position: relative;
-    margin-top: 30%; 
-    font-size: 25px;
+div .content h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+div .content ul li{
     margin-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.podcast-box{ 
-    height: 350px;
-    width: 220px;
-    cursor: pointer;
-    position: relative ;
-    margin: 50px;
-    border-radius: 12px;
-    background-color: #fff;
-    box-shadow: rgba(200, 200, 216, 0.2) 2px 9px 40px 0;
-    padding: 15px 15px 30px;
-    float: left;
-    
-}
-
-.podcast-box:hover {
-    box-shadow: 2px 7px 15px 10px rgb(0 0 0 / 0.2);
-    transition: all 0.5s ease-out;
-    background-color: white;
-}
-
-.pod-thumb {
-    width: 180px;
-    height: 200px;
-    margin: 0 auto 25px;
-    box-shadow: rgba(23, 23, 24, 0.2) 2px 9px 40px 0;
-}
-
-.pod-thumb img {
+/* Footer */
+.footer{
+    position: absolute;
+    text-align: center;
+    background-color:rgb(248, 244, 244);
+    padding: 40px;
+    bottom: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-.box-info{
-    display: flex;
-    gap : 0 20px;
-    padding-left: 9px;
-}
-
-.pod-name {
-    font-size: 17px;
-    font-weight: 700;
-    text-align: left;
-    margin-bottom: 20px;
-    padding-left:5%;
+    height: auto;
     font-family: 'Open Sans', sans-serif;
 }
-
-.pod-author{
-    font-size: 15px;
-    font-family: 'Open Sans', sans-serif;
-    text-align: left;
-    color: rgba(137, 129, 129, 0.933)
+.footer .socials {
+    display: flex!important;
+    justify-content: center;
+    padding-bottom: 50px;
+    color: #4b4c4d;
 }
-
-div .finish{
+.footer .socials a{
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    opacity: 2;
+    display: block;
+    top:0;
+    transition: top 0.5s;
     font-size: 25px;
-    font-family: "Noto Sans", sans-serif;
-    margin-left: 25%;
-    margin-top: 5%;
-    color: black;
 }
-.start-button {
-    outline: 0;
+.footer .socials a:hover{
+    /* opacity: 2; */
     position: relative;
-    border-radius: 15px;
-    display: inline-block;
-    padding: 10px 40px;
-    font-size: 24px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px;
-    margin-left: 47%;
-    background: linear-gradient(to right, #FFE56F, #A9FF9F);
-    margin-top: 3%;
-    background-color: linear-g;
-    font-weight: 600;
-    font-family: "noto sans", sans-serif;
-    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    color: #6558db;
+    transform: translateX(-3px);
+    top: -10px;
+}
+.footer ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    font-size: 18px;
+    line-height:1.6;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    bottom: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
+.footer ul li a{
+    display: flex;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+}
+.footer ul li{
+    display: flex;
+    padding: 0 30px;
+    transition: 0.5s;
+}
+.footer ul li a:hover{
+    display: flex;
+    opacity: 13;
+    color: black;
+    font-weight: bold;
 }
 
+.footer .list li {
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    transition: 0.5s;
+}
 
+.footer .list li:hover {
+    position: relative;
+    text-shadow: 1px 0px #4b4c4d;
+    top:-10px;
+}
+
+.footer .copyright{
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    color: #aaa;
+}

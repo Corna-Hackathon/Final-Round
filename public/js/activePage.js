@@ -6,9 +6,3 @@ for (let i = 0; i < menuLength; i++) {
         menuItem[i].classList = "active"
     }
 }
-const menuBtn = document.querySelector('.menu-btn');
-const navlinks = document.querySelector('.nav_links');
-            
-menuBtn.addEventListener('click', () => {
-    navlinks.classList.toggle('mobile_menu');
-});

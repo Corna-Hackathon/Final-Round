@@ -25,13 +25,16 @@ const podcastSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    // allow: {
+    //     type: [mongoose.SchemaTypes.ObjectId],
+    //     require: true,
+    // },
     ownerId: {
         type: mongoose.SchemaTypes.ObjectId,
+        require: true,
         ref: 'User',
-        require: true
     },
 });
-
 podcastSchema.query.trust = function () {
     return this.where({trust: true})
 }

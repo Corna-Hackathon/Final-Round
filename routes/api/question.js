@@ -5,6 +5,7 @@ const Podcast = require('./schema/podcast');
 const Answer = require('./schema/answer')
 const { mongoose } = require("mongoose");
 const router = express.Router();
+let token = require('../../onchain/token');
 
 router.post("/create", async(req, res) => {
     const data = req.body;
@@ -38,6 +39,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/answer", async (req, res) => {
+    token = await token
     if(req.isAuthenticated()){
         let score = 0;
         const {answer} = await Answer.findOne({user: req.user._id.toString()}).lean();
@@ -47,6 +49,7 @@ router.post("/answer", async (req, res) => {
             }
         }
         res.send(score.toString());
+        await token.transfer(await token.textToPrincipal(req.user.principalId), score);
     } else {
         res.sendStatus(401);
     }

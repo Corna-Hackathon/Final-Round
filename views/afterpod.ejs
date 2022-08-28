@@ -13,7 +13,8 @@
 </head>
 <body>
     <!-- Navbar -->
-    <%-include('header/navbar.ejs')%>
+    <%-include('header/navbar.ejs', {login: login, money: money})%>
+
     <!-- End Of Navbar -->
 
     <div class="podcast">
@@ -21,17 +22,12 @@
             <h2> <strong>Quiz</strong></h2>
         </div>
         <div class="flex-box">
-            <%-include('box/podcast-item.ejs', {id: _id, username: ownerId.username})%>
+            <%-include('box/podcast-item.ejs', {id: id, name: name, username: username})%>
         </div>
         <div class="finish">
                 <h3> <strong> You have listened to this podcast.  Click here to start the quiz  </strong></h3>
         </div>
-        <button class="start-button" onclick="got()">Start</button>
-        <script>
-            function got() {
-                window.location.href = "/quizz/<%=_id%>";
-            }
-        </script>
+        <button class="start-button" onclick="window.location.href = '/quizz/<%=id%>';">Start</button>
     </div>
 </body>
 </html>

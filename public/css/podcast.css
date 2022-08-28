@@ -363,6 +363,9 @@ header ul li button.connect {
     margin-bottom: 20px;
     padding-left:5%;
     font-family: 'Open Sans', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pod-author{

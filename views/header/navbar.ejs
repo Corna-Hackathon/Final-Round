@@ -15,7 +15,17 @@
             </div>
         </li>
         <li>
-            <button class="login" onclick="location='/login'"><strong>Login</strong></button>
+            <%if(login !== undefined){%>
+                <button class="login" onclick="window.location.href='/api/user/logout'">
+                    <strong>
+                        Hello <%=login%> (<%=money%> AOK)
+            <%} else {%>
+                <button class="login" onclick="window.location.href='/login'">
+                    <strong>
+                        Login
+            <%}%>
+                </strong>
+            </button>
         </li>
     </ul>
     <script src="/js/activePage.js"></script>

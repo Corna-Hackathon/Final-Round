@@ -15,105 +15,15 @@
     </head>
     <body>
         <!-- Navbar -->
-        <%-include('header/navbar.ejs')%>
-
+        <%-include('header/navbar.ejs', {login: login, money: money})%>
         <!-- End Of Navbar -->
         <main class="news_section">
             <!-- Blog-News Section -->
             <div class="wrapper">
                 <div class="blog">
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/one.jpg" alt="" />
-                        </div>
-
-                        <div class="blog_content" id="1">
-                            <div class="text">
-                                <h4>Binance là gì? Hướng dẫn sử dụng sàn Binance (2022)</h4>
-                            </div>
-                            <p>Something.</p>
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/two.png" alt="" />
-                        </div>
-
-                        <div class="blog_content">
-                            <div class="text">
-                                <h4>DeFi là gì? Tổng quan về tiềm năng</h4>
-                            </div>
-                            <p>Something.</p>
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/three.png" alt="" />
-                        </div>
-
-                        <div class="blog_content">
-                            <div class="text">
-                                <h4>TỔNG QUAN VỀ CORNFIELD</h4>
-                            </div>
-                            <p>Something.</p>
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/three.png" alt="" />
-                        </div>
-
-                        <div class="blog_content">
-                            <div class="text">
-                                <h4>TỔNG QUAN VỀ CORNFIELD</h4>
-                            </div>
-                            <p>Something.</p>
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/one.jpg" alt="" />
-                        </div>
-
-                        <div class="blog_content" id="1">
-                            <div class="text">
-                                <h4>Binance là gì? Hướng dẫn sử dụng sàn Binance (2022)</h4>
-                            </div>
-                            <p>Something.</p>
-
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="single_blog">
-                        <div class="blog_img">
-                            <img src="/assets/blog-img/one.jpg" alt="" />
-                        </div>
-
-                        <div class="blog_content" id="1">
-                            <div class="text">
-                                <h4>Binance là gì? Hướng dẫn sử dụng sàn Binance (2022)</h4>
-                            </div>
-                            <p>Something.</p>
-
-                            <div class="read_more">
-                                <a href="../../../OneDrive/Tài%20liệu/GitHub/demo-hackathon/blog/1.html">read more <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
+                    <% news.forEach(function(newsItem){ %>
+                        <%- include('box/news-item', {id: newsItem._id, title: newsItem.title, content: newsItem.content}); %>
+                    <% }); %>
                     </div>
                 </div>
             </div>

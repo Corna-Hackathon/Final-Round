@@ -14,5 +14,5 @@ function unicef() {
     window.open('https://www.unicef.org/vietnam/vi', '_blank');
 }
 function maiam() {
-    window.open('charity.html', '_blank');
+    window.open('/charity', '_blank');
 }
