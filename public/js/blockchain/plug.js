@@ -118,12 +118,12 @@ const idlFactory = ({ IDL }) => {
 };
 
 async function sendToken() {
-    const aokcanisterId = 'rrkah-fqaaa-aaaaa-aaaaq-cai'
+    const aokcanisterId = 'rgwjw-3aaaa-aaaal-qbcma-cai'
     const whitelist = [aokcanisterId];
 
     const connected = await window.ic?.plug?.requestConnect({
         whitelist,
-        host: 'http://localhost:8000'
+        host: 'https://mainnet.dfinity.network'
     });
     const AOKToken = await window.ic.plug.createActor({
         canisterId: aokcanisterId,

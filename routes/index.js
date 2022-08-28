@@ -38,7 +38,6 @@ router.get('/game', async (req, res) => {
 })
 
 router.get('/news', async (req, res) => {
-    console.log(News)
     if(req.isAuthenticated()) {
         res.render('news', {
             login: req.user.username,
