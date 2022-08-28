@@ -6,6 +6,10 @@ const http = require('http');
 const { mongoose } = require('mongoose');
 const token = require('../onchain/token');
 
+(async () => {
+    console.log(await (await token).balence());
+})();
+
 const port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 

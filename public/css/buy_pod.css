@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@font-face {
+    font-family: foundry;
+    src: url(/assets/web-font/formatype-foundry-biofolio-ultimate-extrabold-demo.otf) format("openType");
+}
+
 
 :root {
     --top_var: 31%;
@@ -9,8 +13,13 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+img {
+    display: block;
+    max-width: 100%;
+}
 body {
-    min-height: 50;
+    min-height: 50px;
     overflow-x: hidden;
     height: auto;
     width: auto;
@@ -45,29 +54,44 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* End of Custom Scrollbar */
 
-/* ---------- Header ---------- */
+/* Header */
 header {
     position: fixed;
-    display: flex;
-    height: 70px;
-    width: 100%;
     z-index: 100;
     top: 0;
     left: 0;
+    width: 100%;
     padding: 30px 100px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Arial Bold, 'Arial Narrow Bold', sans-serif;
-    background: linear-gradient(to right, #FFE56F, #A9FF9F);
+    font-family: Arial Bold,  'Arial Narrow Bold', sans-serif;
+    background:linear-gradient(to right,  #FFE56F, #A9FF9F);
+
+    height: 70px;
     border-radius: 2px;
 }
+main {
+    width: 100%;
 
+}
 
+img {
+    display: block;
+    max-width: 100%;
+}
 .logo {
+    /* color: #fff;
+    font-weight: 700;
+    text-decoration:  none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px; */
+    /* width: 40px;
+    height: auto; */
     width: 140px;
     height: auto;
 }
-
 header ul {
     display: flex;
     justify-content: center;
@@ -76,22 +100,20 @@ header ul {
     font-family: "Noto Sans", sans-serif;
 
 }
-
-header ul li {
+header ul li{
     list-style: none;
     margin-left: 40px;
 
 
 }
-
-header ul li a {
+header ul li a{
     color: #202020;
     text-decoration: none;
     padding: 6px 15px;
     border-radius: 15px;
     transition: all 0.5s ease-in-out;
-}
 
+}
 header ul li a:hover {
     color: #000;
     box-shadow: 0 0 5px #FFFF00,
@@ -101,15 +123,13 @@ header ul li a:hover {
     background: #ffff00;
     transition: all 0.5s ease-out;
 }
-
-header ul li a.active {
+header ul li a.active{
     background: #ffff00;
     color: #000;
 
 
 }
-
-header ul li button.connect {
+header ul li button.connect{
     width: 100%;
     height: 40px;
     border-radius: 15px;
@@ -117,15 +137,22 @@ header ul li button.connect {
     color: #000;
 
 }
-
-/* Login Button */
-.login {
+.menu-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    cursor: pointer;
+    display: none;
+}
+/* Connect Button */
+.button {
     outline: 0;
     position: relative;
     border-radius: 15px;
     display: inline-block;
-    padding: 6px 40px;
-    font-size: 20px;
+    padding: 10px 40px;
+    font-size: 16px;
     overflow: hidden;
     cursor: pointer;
     border: 1px;
@@ -135,9 +162,30 @@ header ul li button.connect {
     font-family: "noto sans", sans-serif;
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
-
-
-.login:hover {
+.button:hover {
+    background-color: #e88845;
+    color: #fff;
+    box-shadow: 0 0 5px #6558db,
+    0 0 20px rgba(76, 0, 255, 0.596),
+    0 0 35px rgb(75 0 255 / 0.7),
+    0 0 50px rgb(75 0 255 / 0.6);
+    border-color: #fff;
+}
+.button {
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    padding: 10px 40px;
+    font-size: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #e88845;
+    color: #000;
+    font-weight: 600;
+    color: #fff;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.button:hover {
     background-color: rgb(168, 36, 36);
     color: #000;
     box-shadow: 0 0 5px rgb(168, 36, 36),
@@ -145,62 +193,6 @@ header ul li button.connect {
     0 0 35px rgb(24.75 21.57 53.68 / 0.7),
     0 0 50px rgb(24.75 21.57 53.68 / 0.6);
 }
-
-.dropdown a {
-    border: none;
-    /*padding: 15px 34px;*/
-    padding: 6px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    width: 100%;
-    margin: 4px 6px;
-    cursor: pointer;
-    font-family: "Noto Sans", sans-serif;
-    background-color: #e88845;
-    color: #fff;
-    border-radius: 15px;
-}
-
-.dropdown-content {
-
-    background-color: inherit;
-    display: none;
-    position: absolute;
-    width: auto;
-    overflow: auto;
-    border-radius: 15px;
-
-
-}
-
-.dropdown:hover .dropdown-content {
-    overflow-x: hidden;
-    display: block;
-
-
-}
-
-.dropdown-content a {
-    font-family: "Noto Sans", sans-serif;
-    display: block;
-    color: #fff;
-    border-radius: 0;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 15px;
-}
-
-.dropdown-content a:hover {
-    background-color: yellow;
-    color: #000;
-    border-radius: 15px;
-
-
-}
-
-/* ---------- End of header ----------*/
 /* End of header */
 
 .back-to-top {
@@ -258,6 +250,7 @@ header ul li button.connect {
     pointer-events: auto;
     opacity: 1;
 }
+
 
 /* Footer */
 .footer{
@@ -366,21 +359,21 @@ header ul li button.connect {
     cursor: pointer;
     display: none;
     animation: backto-top-bounce 4s infinite ease-in-out;
-}
-.back-to-top:hover {
+  }
+  .back-to-top:hover {
     box-shadow: 0 3px 7px 0 rgba(254, 242, 46, 0.35);
-}
-@keyframes backto-top-bounce {
+  }
+  @keyframes backto-top-bounce {
     0% {
-        transform: translateY(-5px);
+      transform: translateY(-5px);
     }
     50% {
-        transform: translateY(10px);
+      transform: translateY(10px);
     }
     100% {
-        transform: translateY(-5px);
+      transform: translateY(-5px);
     }
-}
+  }
 
 
 .to_top{
@@ -406,6 +399,34 @@ header ul li button.connect {
     bottom:32px;
     pointer-events: auto;
     opacity: 1;
+}
+
+/* Login Button */
+.login {
+    outline: 0;
+    position: relative;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 6px 40px;
+    font-size: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px;
+    background: #e88845;
+    color: white;
+    font-weight: 500;
+    font-family: "noto sans", sans-serif;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+
+.login:hover {
+    background-color: rgb(168, 36, 36);
+    color: #000;
+    box-shadow: 0 0 5px rgb(168, 36, 36),
+        0 0 20px rgb(24.75 21.57 53.68 / 0.8),
+        0 0 35px rgb(24.75 21.57 53.68 / 0.7),
+        0 0 50px rgb(24.75 21.57 53.68 / 0.6);
 }
 
 .dropdown a{
@@ -457,48 +478,107 @@ header ul li button.connect {
     border-radius: 15px;
 }
 
-.wrapper{
-    box-shadow: rgba(100, 100, 111, 0.2) 2px 9px 40px 0;
-    border-radius: 8px;
-    width: 500px;
-    padding: 30px;
-    background: #fff;
-    margin: 100px auto;
+
+.podcast-box{
+    width: 250px; 
+    height: 380px;
+    margin: 100px;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: rgba(200, 200, 216, 0.2) 2px 9px 40px 0;
+    padding: 30px 30px 60px;
+    
 }
 
-.wrapper h2{
-    color: #000;
-    font-size: 27px;
-    font-weight: 600;
+.podcast-box:hover {
+    box-shadow: 2px 7px 15px 10px rgb(0 0 0 / 0.2);
+    transition: all 0.5s ease-out;
+    background-color: white;
+}
+
+.pod-thumb {
     text-align: center;
-}
-
-.wrapper form{
-    display: block;
-    height: 50vh;
-    margin: 30px 0;
     align-items: center;
+    width: 190px;
+    height: 190px;
+    margin: 0 0 25px;
+    box-shadow: rgba(23, 23, 24, 0.2) 2px 9px 40px 0;
+}
+
+.pod-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+.box-info{
+    display: flex;
+    gap : 0 20px;
+    padding-left: 9px;
+}
+
+.pod-name {
+    font-size: 23px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left:5%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.pod-author{
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    color: rgba(137, 129, 129, 0.933)
+}
+
+
+.like-button {
+    font-size: 18px;
+    display: flex;
     justify-content: center;
-    flex-direction: column;
-    border-radius: 5px;
-    border: 2px dashed #6990f2;
-    padding: 70px ;
+    align-items: center;  
+    gap: 5%;
+}
+
+.like-numb {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
 
 }
 
-.content_upload {
-    margin: 10px 0px;
-    height: 25%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.submit_btn{
-    margin: 70px 0px;
-    text-align: center;
+.buying_box {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    width: 400px;
+    margin: 100px;
 }
 
-.submit_btn button {
+.buying_box p {
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn_row {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.submit {
     background:linear-gradient(to right,  #FFE56F, #A9FF9F);
     border: none;
     border-radius: 15px;
@@ -511,59 +591,15 @@ header ul li button.connect {
     font-size: 14px;
 }
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.container#blur.active {
-    filter: blur(20px);
-}
-
-/* Pop Up Validation */
-.popup_validation {
-    background:white;
-    border: 1px solid black;
-    border-radius: 5px;
-    position: absolute;
-    top:0;
-    left:50%;
-    transform: translate(-50%,-50%) scale(0.1);
-    margin: auto;
-    display: flex;
-    padding: 25px 30px;
-    width: 450px;
-    height: auto;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    pointer-events: none;
-    font-family: Arial, Helvetica, sans-serif;
-    visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
-}
-
-.open_popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%,-50%) scale(1);
-}
-
-
-
-.popup_validation .title{
-    font-size: 100px;
-    margin-bottom: 10px;
-}
-
-
-.popup_validation .invalid_text{
-    font-size: 20px;
-    font-weight: 500;
-}
-
-input[type=file] {
-    width: 360px;
+.decline {
+    background:linear-gradient(to right,  #FFE56F, #A9FF9F);
+    border: none;
+    border-radius: 15px;
+    color: black;
+    font-weight: 700;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 14px;
 }

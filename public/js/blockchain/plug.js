@@ -117,7 +117,7 @@ const idlFactory = ({ IDL }) => {
     });
 };
 
-async function getBalance() {
+async function sendToken() {
     const aokcanisterId = 'rrkah-fqaaa-aaaaa-aaaaq-cai'
     const whitelist = [aokcanisterId];
 
@@ -130,9 +130,14 @@ async function getBalance() {
         interfaceFactory: idlFactory,
     });
 
-    const balance = await AOKToken.balence();
-    $('.login').text(`Hello balance`);
-    console.log(balance);
+    await AOKToken.approve(await AOKToken.textToPrincipal("cvbg5-4mj6t-sqhn2-aeku3-42nq7-2buw5-xhonw-nervo-ogphz-dujul-lae"), 1)
+    $.ajax({
+        type: "POST",
+        url: `/api/podcast/buy/${location.pathname.split('/')[2]}`,
+        success: function(data) {
+            if(data.status) window.location.href = `/playing_pod/${location.pathname.split('/')[2]}`
+            else window.location.href = `/podcast`
+        }
+    })
 }
 
-// getBalance();

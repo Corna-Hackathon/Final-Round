@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -10,46 +10,34 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <title>Buy Podcast</title>
+        <script src="/jquery/jquery.min.js"></script>
     </head>
     <body>
         <!-- Navbar -->
         <%-include('header/navbar.ejs', {login: login, money: money})%>
-        <script src="/public/js/activePage.js"> </script>
         <!-- End Of Navbar -->
         <!-- Back To Top Button -->
         <a href="#" class="to_top">
             <i class="fa fa-chevron-up"></i>
-            <script src="/public/js/to_top.js"> </script>
+            <script src="/js/to_top.js"> </script>
         </a>
         <!-- End Of "Back To Top Button"-->
 
         <!-- Main Content -->
         <div class="container">
-            <div class="podcast-box">
-                <div class="pod-thumb">
-                    <img src="./public/assets/podcastImg.png" alt="" />
-                </div>
-                <h3 class="pod-name">Podcast 3</h3>
-                <div class="box-info">
-                    <h3 class="pod-author">Marc Marco</h3>
-                    <div class="like-button">
-                        <ion-icon name="heart-outline"></ion-icon>
-                        <h3 class="like-numb">271</h3>
-                    </div>
-                </div>
-            </div>
+            <%- include('box/podcast-item', {id: podcast._id, name: podcast.name, username: podcast.ownerId.username}); %>
             <div class="buying_box">
                 <p>Tập Podcast này đáng giá 1 AOK. Bạn có chắc chắn muốn mua Podcast này?</p>
                 <div class="btn_row">
-                    <button class="submit">Xác nhận</button>
-                    <button class="decline">Từ chối</button>
+                    <button class="submit" onclick="sendToken()">Xác nhận</button>
+                    <button class="decline" onclick="window.location.href = '/podcast'">Từ chối</button>
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
         <%-include('header/footer.ejs')%>
-        <script src="/js/up_quizz.js"></script>
+        <script src="/js/blockchain/plug.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>

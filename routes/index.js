@@ -63,7 +63,8 @@ router.get('/podcast', async (req, res) => {
 });
 
 router.get('/playing_pod/:id', async (req, res) => {
-    if(req.isAuthenticated()){
+    const data = await Podcast.findById(req.params.id);
+    if(data.get("allow").includes(req.user?._id.toString())){
         try {
             const data = await Podcast.findById(req.params.id).lean();
             res.render('playing_pod', {
@@ -80,8 +81,30 @@ router.get('/playing_pod/:id', async (req, res) => {
     }
 });
 
-router.get('/afterpod/:id', async (req, res) => {
+router.get('/buy_pod/:id', async (req, res) => {
     if(req.isAuthenticated()){
+        const data = await Podcast.findById(req.params.id);
+        if(!data.get("allow").includes(req.user?._id.toString())){
+            try {
+                res.render('buy_pod', {
+                    podcast: await Podcast.findById(req.params.id),
+                    login: req.user.username,
+                    money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
+                });
+            } catch {
+                res.redirect('/podcast');
+            }
+        } else {
+            res.redirect('/playing_pod/' + req.params.id);
+        }
+    } else {
+        res.redirect('/login');
+    }
+});
+
+router.get('/afterpod/:id', async (req, res) => {
+    const data = await Podcast.findById(req.params.id);
+    if(data.get("allow").includes(req.user?._id.toString())){
         try{
             const data = await Podcast.findById(req.params.id).lean().populate('ownerId');
             res.render('afterpod', {
@@ -100,7 +123,8 @@ router.get('/afterpod/:id', async (req, res) => {
 });
 
 router.get('/quizz/:id', async (req, res) => {
-    if(req.isAuthenticated()){
+    const data = await Podcast.findById(req.params.id);
+    if(data.get("allow").includes(req.user?._id.toString())){
         res.render('quizz', {
             login: req.user.username,
             money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
@@ -119,6 +143,17 @@ router.get('/blog/:id', async (req, res) => {
         });
     } else {
         res.render('blog', { login: undefined, money: undefined, news: await News.findById(req.params.id)});
+    }
+})
+
+router.get('/up_podcast', async (req, res) => {
+    if(req.isAuthenticated()) {
+        res.render('up_podcast', {
+            login: req.user.username,
+            money: await token.balanceOf(await token.textToPrincipal(req.user.principalId))
+        });
+    } else {
+        res.redirect('/login')
     }
 })
 

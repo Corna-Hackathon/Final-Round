@@ -25,10 +25,10 @@ const podcastSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    // allow: {
-    //     type: [mongoose.SchemaTypes.ObjectId],
-    //     require: true,
-    // },
+    allow: {
+        type: [String],
+        require: true,
+    },
     ownerId: {
         type: mongoose.SchemaTypes.ObjectId,
         require: true,

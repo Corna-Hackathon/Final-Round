@@ -1,7 +1,8 @@
-const { body, validationResult } = require('express-validator');
+const { body } = require('express-validator');
 const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
+let token = require('../../onchain/token');
 
 const Podcast = require('./schema/podcast');
 
@@ -44,7 +45,7 @@ router.post('/upload',
                         imageMimetype: imageMimetype,
                         ownerId: user,
                     });
-                    res.status(201).send({ status: 'Successful' });
+                    res.redirect('/')
                 } catch(err){
                     res.status(500).send({ status: 'Error', errors: err });
                 }
@@ -80,6 +81,22 @@ router.get('/getName/:id', async (req, res) => {
     const id = req.params.id;
     const data = await Podcast.findById(id);
     res.status(201).send(data.get("name"));
+})
+
+router.post('/buy/:id', async (req, res) => {
+    token = await token;
+    const tranfers = await token.transferFrom(await token.textToPrincipal(req.user.principalId),
+        await token.textToPrincipal("cvbg5-4mj6t-sqhn2-aeku3-42nq7-2buw5-xhonw-nervo-ogphz-dujul-lae"),
+        1);
+    if(tranfers.Ok !== undefined){
+        const podcast = await Podcast.findById(req.params.id);
+        podcast.allow.push(req.user._id.toString());
+        await podcast.save();
+        res.send({status: true});
+    } else {
+        res.send({status: false});
+
+    }
 })
 
 
